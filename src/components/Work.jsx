@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaGithub, FaEye } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { ProjectCard, Grid } from "./ui";
 import teamLink from "../assets/teamlink.png"
 import taskGame from "../assets/taskGame.png"
-import hawsa from "../assets/hawsa.png"
 import pingPong from "../assets/pingPong.png"
+import magicMaid from "../assets/magicmaid-project.png"
+import reactPortfolio from "../assets/portfolio-desktop.png"
+
+
 
 const Work = () => {
   useEffect(() => {
@@ -43,71 +47,45 @@ const Work = () => {
       demoLink: "/",
       codeLink: "https://github.com/ABarranco95/Ping-Pong",
     },
+    {
+      title: "Magic Maid",
+      image: magicMaid,
+      description:
+        "Magic Maid is a responsive and user-friendly house cleaning website built with React. Customers can easily schedule cleaning services and manage appointments. This project allowed me to improve my React skills and create an effective website for a business.",
+      technologies: ["Javascript", "DOM", "HTML", "CSS"],
+      demoLink: "/",
+      codeLink: "https://github.com/ABarranco95/Ping-Pong",
+    },{
+      title: "React Portfolio",
+      image: reactPortfolio,
+      description:
+        "The website showcases my skills, experience, and projects in a modern and visually appealing way. The website is fully responsive and optimized for various devices. This project allowed me to improve my skills in React and explore the capabilities of Tailwind CSS.",
+      technologies: ["React", "Tailwind"],
+      demoLink: "/",
+      codeLink: "https://github.com/ABarranco95/Ping-Pong",
+    },
   ];
 
   return (
-    <div className="bg-[#4a3030] text-white py-20" id="projects" name='work'>
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center pb-10">
-          Projects
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="projects" name="work" className="bg-[#4a3030] text-white">
+      <div className="container mx-auto py-20">
+        <h2 className="text-3xl font-bold text-center pb-10">Projects</h2>
+        <Grid>
           {projects.map((project) => (
-            <div
+            <ProjectCard
               key={project.title}
-              className="bg-white rounded-lg overflow-hidden shadow-lg relative"
-              data-aos="fade-up"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-40 object-cover object-center"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-bold mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="bg-[#ff5424] text-white rounded-full py-1 px-2 text-sm mr-2 mb-2"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 flex justify-between">
-                  {/* <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-[#ff5424] text-white rounded-lg py-2 px-4 text-sm font-bold flex items-center hover:bg-[#ff904f] transition duration-300 ease-in-out"
-                  >
-                    <FaEye className="mr-2" />
-                    View Demo
-                  </a> */}
-                  <a
-                    href={project.codeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gray-600 text-white rounded-lg py-2 px-4 text-sm font-bold flex items-center hover:bg-gray-500 transition duration-300 ease-in-out"
-                  >
-                    <FaGithub className="mr-2" />
-                    View Code
-                  </a>
-                </div>
-              </div>
-            </div>
+              title={project.title}
+              image={project.image}
+              description={project.description}
+              technologies={project.technologies}
+              demoLink={project.demoLink}
+              codeLink={project.codeLink}
+            />
           ))}
-        </div>
+        </Grid>
       </div>
-    </div>
+    </section>
   );
-  
-  }  
+};
 
-  export default Work;
+export default Work;
